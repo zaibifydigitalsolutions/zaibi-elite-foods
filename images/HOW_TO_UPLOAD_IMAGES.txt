@@ -1,0 +1,18 @@
+HOW TO UPLOAD YOUR OWN CUSTOM IMAGES
+====================================
+
+You requested a zero-knowledge way to use your own images. I have built it for you! 
+Right now, the app is using placeholder images that I created for you. 
+
+When you want to use your own photos, follow these easy steps:
+
+1. **For the Home Page Banners:**
+   Simply drag your own horizontal banner photos into THIS folder and name them exactly:
+   - `banner1.png` (or .jpg)
+   - `banner2.png` (or .jpg)
+   - `banner3.png` (or .jpg)
+
+2. **For the Menu Products:**
+   Whenever you add a new image for a food item, put it in this folder and name it clearly (for example: `truffle.jpg`). Then, open up `script.js` in a text editor like Notepad, find the item in the list, and type `./images/truffle.jpg` instead of the placeholder name!
+
+When you deploy to Vercel, just remember to drag and drop this `images` folder along with all the other files, and your website will instantly be updated!
