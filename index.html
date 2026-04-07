@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Zaibi Elite | Mobile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <!-- Ionicons for Android Style Icons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <!-- Top Bar -->
+    <header class="app-header">
+        <h1 class="app-title">Zaibi Elite</h1>
+        <div class="cart-icon-header" onclick="switchTab('cart')">
+            <ion-icon name="bag-handle-outline"></ion-icon>
+            <span id="header-cart-count" class="cart-badge">0</span>
+        </div>
+    </header>
+
+    <!-- App Content Area -->
+    <main id="app-content">
+
+        <!-- HOME SCREEN -->
+        <section id="home-screen" class="screen active">
+            <div class="hero-image-wrapper">
+                <img src="file:///C:/Users/computers/.gemini/antigravity/brain/4ae336f9-d7ae-41ac-9848-cda60dc170a5/restaurant_interior_light_1775588004446.png" class="hero-bg" alt="Beautiful restaurant interior">
+                <div class="hero-overlay"></div>
+            </div>
+            
+            <div class="home-content">
+                <h2>A Symphony<br>of Taste</h2>
+                <p>Welcome to the pinnacle of culinary excellence.</p>
+                <button class="cta-btn full-width" onclick="switchTab('menu')">Order Now</button>
+                <br><br>
+                <img src="file:///C:/Users/computers/.gemini/antigravity/brain/4ae336f9-d7ae-41ac-9848-cda60dc170a5/signature_platter_1775588076825.png" class="rounded-image shadow-sm full-width" alt="Signature dish">
+            </div>
+        </section>
+
+        <!-- MENU SCREEN -->
+        <section id="menu-screen" class="screen">
+            <div class="menu-filters" id="category-filters">
+                <!-- Categories rendered here -->
+            </div>
+            <div class="menu-list" id="menu-list">
+                <!-- Products rendered via JS -->
+            </div>
+        </section>
+
+        <!-- CART SCREEN -->
+        <section id="cart-screen" class="screen">
+            <div class="cart-container">
+                <h2>Your Order</h2>
+                <div id="cart-items" class="cart-items-list">
+                    <!-- Cart items rendered here -->
+                </div>
+                
+                <div id="cart-summary" class="cart-summary hidden">
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="cart-subtotal">$0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Taxes & Fees</span>
+                        <span id="cart-tax">$0.00</span>
+                    </div>
+                    <div class="summary-row total-row">
+                        <span>Total (USD)</span>
+                        <span id="cart-total">$0.00</span>
+                    </div>
+                    <button class="cta-btn full-width checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+                </div>
+                
+                <div id="empty-cart-msg" class="empty-cart-msg">
+                    <ion-icon name="cart-outline" class="empty-icon"></ion-icon>
+                    <h3>Your cart is empty</h3>
+                    <p>Looks like you haven't added any elite dishes yet.</p>
+                    <button class="cta-btn secondary" onclick="switchTab('menu')">Browse Menu</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SCREEN -->
+        <section id="contact-screen" class="screen">
+            <div class="contact-container">
+                <h2>Get in Touch</h2>
+                <p class="subtitle">For private dining and special requests.</p>
+                <div class="contact-card">
+                    <ion-icon name="location-outline"></ion-icon>
+                    <p>123 Luxury Avenue<br>Beverly Hills, CA 90210</p>
+                </div>
+                <div class="contact-card">
+                    <ion-icon name="call-outline"></ion-icon>
+                    <p>+1 (555) ELITE-FOOD</p>
+                </div>
+                
+                <form class="reservation-form" onsubmit="event.preventDefault(); alert('Message Sent!');">
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="email" placeholder="Email Address" required>
+                    <textarea placeholder="Your Message" rows="4" required></textarea>
+                    <button type="submit" class="cta-btn full-width">Send Message</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Bottom App Navigation Bar -->
+    <nav class="bottom-nav">
+        <div class="nav-item active" onclick="switchTab('home')" id="nav-home">
+            <ion-icon name="home"></ion-icon>
+            <span>Home</span>
+        </div>
+        <div class="nav-item" onclick="switchTab('menu')" id="nav-menu">
+            <ion-icon name="restaurant"></ion-icon>
+            <span>Menu</span>
+        </div>
+        <div class="nav-item" onclick="switchTab('cart')" id="nav-cart">
+            <div class="icon-wrapper">
+                <ion-icon name="cart"></ion-icon>
+                <span id="nav-cart-badge" class="nav-badge hidden">0</span>
+            </div>
+            <span>Cart</span>
+        </div>
+        <div class="nav-item" onclick="switchTab('contact')" id="nav-contact">
+            <ion-icon name="call"></ion-icon>
+            <span>Contact</span>
+        </div>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+</html>

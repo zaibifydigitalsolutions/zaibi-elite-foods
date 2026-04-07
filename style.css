@@ -1,0 +1,464 @@
+/* Mobile First Approach for App-like Feel */
+:root {
+    --primary: #1A1A1A;
+    --secondary: #6B6B6B;
+    --bg: #FAFAFA;
+    --bg-muted: #F2F2F2;
+    --white: #FFFFFF;
+    --accent: #D4AF37; /* Gold accent */
+    --accent-hover: #C5A028;
+    --border: #E5E5E5;
+    
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+    
+    --nav-height: 65px;
+    --header-height: 60px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent; /* Remove blue flash on mobile taps */
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--primary);
+    background-color: var(--bg);
+    overflow: hidden; /* Prevent body scroll, handle scroll in app-content */
+}
+
+/* App Header */
+.app-header {
+    height: var(--header-height);
+    background: var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
+.app-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.cart-icon-header {
+    position: relative;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -8px;
+    background: var(--accent);
+    color: var(--white);
+    font-size: 0.7rem;
+    font-weight: 600;
+    height: 18px;
+    width: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+/* Main Content Area */
+#app-content {
+    position: fixed;
+    top: var(--header-height);
+    bottom: var(--nav-height);
+    left: 0;
+    right: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: var(--bg);
+}
+
+.screen {
+    display: none;
+    padding: 20px;
+    padding-bottom: 40px;
+    animation: fadeIn 0.3s ease;
+}
+
+.screen.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Typography & Globals */
+h2 {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+.subtitle {
+    color: var(--secondary);
+    margin-bottom: 2rem;
+}
+
+.rounded-image { border-radius: 12px; }
+.full-width { width: 100%; display: block; }
+.hidden { display: none !important; }
+
+/* Buttons */
+button {
+    font-family: var(--font-body);
+}
+.cta-btn {
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    cursor: pointer;
+}
+
+.cta-btn.secondary {
+    background-color: var(--bg-muted);
+    color: var(--primary);
+    border: 1px solid var(--border);
+}
+
+/* Home Screen */
+#home-screen {
+    padding: 0; 
+}
+
+.hero-image-wrapper {
+    position: relative;
+    height: 40vh;
+    width: 100%;
+}
+
+.hero-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, var(--bg) 0%, rgba(250,250,250,0) 100%);
+}
+
+.home-content {
+    padding: 20px;
+    margin-top: -40px;
+    position: relative;
+    z-index: 10;
+}
+
+/* Menu Screen */
+.menu-filters {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    scrollbar-width: none;
+}
+.menu-filters::-webkit-scrollbar { display: none; }
+
+.filter-chip {
+    padding: 8px 16px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    white-space: nowrap;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+.filter-chip.active {
+    background: var(--primary);
+    color: var(--white);
+    border-color: var(--primary);
+}
+
+.menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.menu-item {
+    display: flex;
+    background: var(--white);
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    gap: 15px;
+}
+
+.menu-item img {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.menu-item-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menu-item-info h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+.menu-item-info p {
+    font-size: 0.8rem;
+    color: var(--secondary);
+    line-height: 1.2;
+}
+
+.menu-item-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.menu-price {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--accent);
+    font-size: 1.1rem;
+}
+
+.add-btn {
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Cart Screen */
+.cart-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--white);
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+.cart-item-details h4 {
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+.cart-item-details .price {
+    color: var(--accent);
+    font-family: var(--font-heading);
+    font-weight: bold;
+}
+
+.cart-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.qty-btn {
+    background: var(--bg-muted);
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-summary {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    color: var(--secondary);
+}
+
+.total-row {
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 1.2rem;
+    border-top: 1px solid var(--border);
+    padding-top: 15px;
+    margin-top: 5px;
+}
+
+.empty-cart-msg {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--secondary);
+}
+.empty-icon {
+    font-size: 4rem;
+    color: var(--border);
+    margin-bottom: 10px;
+}
+
+/* Contact Form */
+.contact-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: var(--white);
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+.contact-card p {
+    font-size: 1rem;
+}
+
+.reservation-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.reservation-form input, .reservation-form textarea {
+    padding: 15px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--white);
+    font-family: inherit;
+}
+
+/* Bottom Android-Style Navigation */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: var(--nav-height);
+    background-color: var(--white);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+    z-index: 100;
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary);
+    flex: 1;
+    height: 100%;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.nav-item ion-icon {
+    font-size: 1.5rem;
+    margin-bottom: 4px;
+}
+
+.nav-item span {
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+.nav-item.active {
+    color: var(--primary);
+}
+
+.nav-item.active ion-icon {
+    color: var(--accent); /* App pop unselected state */
+}
+
+.icon-wrapper {
+    position: relative;
+}
+
+.nav-badge {
+    position: absolute;
+    top: -4px;
+    right: -8px;
+    background: var(--accent);
+    color: var(--white);
+    font-size: 0.6rem;
+    font-weight: bold;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Desktop layout constraint so it acts like mobile app on PC */
+@media (min-width: 600px) {
+    body {
+        background-color: #ECECEC;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+    
+    .app-header, #app-content, .bottom-nav {
+        max-width: 420px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-left: 1px solid var(--border);
+        border-right: 1px solid var(--border);
+    }
+    .bottom-nav { border-bottom: 1px solid var(--border); }
+}
