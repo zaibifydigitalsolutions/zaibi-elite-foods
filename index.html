@@ -7,18 +7,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <!-- Ionicons for Android Style Icons -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
     <!-- Top Bar -->
     <header class="app-header">
         <h1 class="app-title">Zaibi Elite</h1>
         <div class="cart-icon-header" onclick="switchTab('cart')">
             <ion-icon name="bag-handle-outline"></ion-icon>
-            <span id="header-cart-count" class="cart-badge">0</span>
+            <span id="header-cart-count" class="cart-badge hidden">0</span>
         </div>
     </header>
 
@@ -27,17 +25,41 @@
 
         <!-- HOME SCREEN -->
         <section id="home-screen" class="screen active">
-            <div class="hero-image-wrapper">
-                <img src="file:///C:/Users/computers/.gemini/antigravity/brain/4ae336f9-d7ae-41ac-9848-cda60dc170a5/restaurant_interior_light_1775588004446.png" class="hero-bg" alt="Beautiful restaurant interior">
-                <div class="hero-overlay"></div>
+            <!-- Snap Swipe Carousel -->
+            <div class="home-carousel" id="home-carousel">
+                <div class="carousel-slide">
+                    <img src="./images/banner1.png" class="hero-bg" alt="Banner 1">
+                    <div class="hero-overlay"></div>
+                    <div class="slide-content">
+                        <h2>A Symphony<br>of Taste</h2>
+                        <p>Welcome to the pinnacle of culinary excellence.</p>
+                        <button class="cta-btn full-width" onclick="switchTab('menu')">Exclusive Menu</button>
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="./images/banner2.png" class="hero-bg" alt="Banner 2">
+                    <div class="hero-overlay"></div>
+                    <div class="slide-content">
+                        <h2>Signature<br>Delights</h2>
+                        <p>Discover our meticulously crafted seasonal entries.</p>
+                        <button class="cta-btn full-width" onclick="switchTab('menu')">Discover More</button>
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="./images/banner3.png" class="hero-bg" alt="Banner 3">
+                    <div class="hero-overlay"></div>
+                    <div class="slide-content">
+                        <h2>Private<br>Dining</h2>
+                        <p>Book a secluded table for an unforgettable evening.</p>
+                        <button class="cta-btn secondary bg-white full-width" onclick="switchTab('contact')" style="background: white; color: black;">Book Now</button>
+                    </div>
+                </div>
             </div>
             
-            <div class="home-content">
-                <h2>A Symphony<br>of Taste</h2>
-                <p>Welcome to the pinnacle of culinary excellence.</p>
-                <button class="cta-btn full-width" onclick="switchTab('menu')">Order Now</button>
-                <br><br>
-                <img src="file:///C:/Users/computers/.gemini/antigravity/brain/4ae336f9-d7ae-41ac-9848-cda60dc170a5/signature_platter_1775588076825.png" class="rounded-image shadow-sm full-width" alt="Signature dish">
+            <div class="carousel-dots" id="carousel-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
             </div>
         </section>
 
@@ -79,7 +101,7 @@
                     <ion-icon name="cart-outline" class="empty-icon"></ion-icon>
                     <h3>Your cart is empty</h3>
                     <p>Looks like you haven't added any elite dishes yet.</p>
-                    <button class="cta-btn secondary" onclick="switchTab('menu')">Browse Menu</button>
+                    <button class="cta-btn secondary full-width" onclick="switchTab('menu')">Browse Menu</button>
                 </div>
             </div>
         </section>
@@ -105,6 +127,11 @@
                     <button type="submit" class="cta-btn full-width">Send Message</button>
                 </form>
             </div>
+        </section>
+
+        <!-- PRODUCT DETAIL OVERLAY SCREEN -->
+        <section id="product-detail-screen" class="screen overlay-screen">
+            <!-- Rendered by Javascript -->
         </section>
 
     </main>
